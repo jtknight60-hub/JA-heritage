@@ -1,1 +1,25 @@
-<p>cart works!</p>
+<section class="cart-page">
+	<h2>Your Cart</h2>
+
+	<div *ngIf="cart.items().length === 0">Your cart is empty.</div>
+
+	<ul *ngIf="cart.items().length > 0" class="items">
+		<li *ngFor="let it of cart.items()">
+			<div class="meta">
+				<strong>{{ it.title }}</strong>
+				<div class="price">${{ (it.price * it.quantity).toFixed(2) }}</div>
+			</div>
+			<div class="controls">
+				<button (click)="decrease(it)">-</button>
+				<span class="qty">{{ it.quantity }}</span>
+				<button (click)="increase(it)">+</button>
+				<button class="remove" (click)="remove(it)">Remove</button>
+			</div>
+		</li>
+	</ul>
+
+	<div class="summary" *ngIf="cart.items().length > 0">
+		<div>Total: <strong>${{ cart.total().toFixed(2) }}</strong></div>
+		<button class="checkout" (click)="checkout()">Checkout</button>
+	</div>
+</section>

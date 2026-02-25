@@ -1,1 +1,20 @@
-<p>register works!</p>
+<section class="register-page">
+	<div class="box">
+		<h2>Create an account</h2>
+		<form (submit)="register($event)">
+			<label>Name</label>
+			<input name="name" [(ngModel)]="name" required />
+
+			<label>Email</label>
+			<input type="email" name="email" [(ngModel)]="email" required />
+
+			<label>Password</label>
+			<input type="password" name="password" [(ngModel)]="password" required />
+
+			<div class="row">
+				<button class="primary" type="submit">Join now</button>
+				<a routerLink="/login">Already a user? Sign in</a>
+			</div>
+		</form>
+	</div>
+</section>

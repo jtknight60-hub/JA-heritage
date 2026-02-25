@@ -1,0 +1,28 @@
+<div class="order-details container">
+  <button class="back" (click)="back()">← Back to orders</button>
+
+  <ng-container *ngIf="order; else missing">
+    <h2>Order {{ order.id }}</h2>
+    <p><strong>Date:</strong> {{ order.date | date:'medium' }}</p>
+    <p><strong>Total:</strong> ${{ order.total.toFixed(2) }}</p>
+
+    <h3>Items</h3>
+    <ul class="items">
+      <li *ngFor="let it of order.items">
+        {{ it.title }} — x{{ it.quantity }} — ${{ (it.price * it.quantity).toFixed(2) }}
+      </li>
+    </ul>
+
+    <h3>Buyer</h3>
+    <div *ngIf="order.user; else anon">
+      <p>{{ order.user.name || order.user.email }}</p>
+      <p>{{ order.user.email }}</p>
+    </div>
+
+    <ng-template #anon><p>Guest checkout</p></ng-template>
+  </ng-container>
+
+  <ng-template #missing>
+    <p>Order not found.</p>
+  </ng-template>
+</div>
