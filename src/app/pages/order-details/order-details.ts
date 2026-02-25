@@ -12,7 +12,10 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 export class OrderDetails {
   order: any | null = null;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) this.load(id);
   }
@@ -24,14 +27,16 @@ export class OrderDetails {
       fetch(`${(window as any)?.__env?.apiUrl || '/api'}/orders/${encodeURIComponent(id)}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : undefined,
       })
-        .then(r => r.ok ? r.json() : Promise.reject(r))
-        .then((data) => { this.order = data; })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r)))
+        .then((data) => {
+          this.order = data;
+        })
         .catch(() => {
           // fallback to localStorage
           try {
             const raw = localStorage.getItem('ja_orders') || '[]';
             const all = JSON.parse(raw) as any[];
-            this.order = all.find(o => o.id === id) || null;
+            this.order = all.find((o) => o.id === id) || null;
           } catch (err) {
             console.error('Failed to load order', err);
             this.order = null;

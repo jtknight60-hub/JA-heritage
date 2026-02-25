@@ -1,19 +1,19 @@
 <section class="shop">
-	<h2>Shop Authentic Jamaican Goods</h2>
-	<div class="grid">
-		<article class="product" *ngFor="let p of products">
-			<div class="media">
-				<img [src]="p.image" [alt]="p.title" />
-			</div>
-			<div class="body">
-				<h3>{{ p.title }}</h3>
-				<div class="price">${{ p.price.toFixed(2) }}</div>
-				<p class="muted">Handpicked, small-batch product.</p>
-				<div class="actions">
-					<button class="dec" (click)="removeOne(p)">-</button>
-					<button class="add" (click)="add(p)">Add to cart</button>
-				</div>
-			</div>
-		</article>
-	</div>
+  <h2>Shop Authentic Jamaican Goods</h2>
+  <div class="grid">
+    <article class="product" *ngFor="let p of products">
+      <div class="media">
+        <img [src]="p.image" [alt]="p.title" />
+      </div>
+      <div class="body">
+        <h3>{{ p.title }}</h3>
+        <div class="price">${{ p.price.toFixed(2) }}</div>
+        <p class="muted">Handpicked, small-batch product.</p>
+        <div class="actions">
+          <button class="dec" (click)="removeOne(p)">-</button>
+          <button class="add" (click)="add(p)">Add to cart</button>
+        </div>
+      </div>
+    </article>
+  </div>
 </section>

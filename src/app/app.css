@@ -1,27 +1,30 @@
-:root{}
+:root {
+}
 /* Layout: make app fill viewport and push footer to bottom when content is short */
-:host, :host > * {
-	box-sizing: border-box;
+:host,
+:host > * {
+  box-sizing: border-box;
 }
 
-html, body, app-root {
-	height: 100%;
-	margin: 0;
+html,
+body,
+app-root {
+  height: 100%;
+  margin: 0;
 }
 
 /* App shell: header + main + footer vertically stacked */
 :host {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main.main {
-	flex: 1 0 auto; /* take remaining space; push footer to bottom */
-	width: 100%;
+  flex: 1 0 auto; /* take remaining space; push footer to bottom */
+  width: 100%;
 }
 
 app-footer {
-	flex-shrink: 0;
+  flex-shrink: 0;
 }
-

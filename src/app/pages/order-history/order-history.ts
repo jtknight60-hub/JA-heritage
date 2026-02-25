@@ -37,7 +37,7 @@ export class OrderHistory {
       const all = JSON.parse(raw) as any[];
       const s = this.session();
       if (s && s.email) {
-        this.orders.set(all.filter(o => o.user && o.user.email === s.email));
+        this.orders.set(all.filter((o) => o.user && o.user.email === s.email));
       } else {
         this.orders.set([]);
       }

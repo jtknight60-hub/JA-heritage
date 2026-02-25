@@ -1,28 +1,26 @@
 <div class="orders-page container">
-	<h2>Order History</h2>
+  <h2>Order History</h2>
 
-	<div *ngIf="!session()" class="notice">
-		<p>You are not signed in. <a routerLink="/login">Sign in</a> to see your orders.</p>
-	</div>
+  <div *ngIf="!session()" class="notice">
+    <p>You are not signed in. <a routerLink="/login">Sign in</a> to see your orders.</p>
+  </div>
 
-	<div *ngIf="orders().length === 0">
-		<p>No orders found.</p>
-	</div>
+  <div *ngIf="orders().length === 0">
+    <p>No orders found.</p>
+  </div>
 
-	<ul *ngIf="orders().length > 0" class="orders-list">
-		<li *ngFor="let o of orders()" class="order-item">
-			<div class="order-row">
-				<div>
-					<strong>Order:</strong> {{ o.id }}<br />
-					<small>{{ o.date | date:'medium' }}</small>
-				</div>
-				<div>
-					<strong>Total:</strong> ${{ o.total.toFixed(2) }}
-				</div>
-				<div>
-					<button (click)="viewOrder(o)">View</button>
-				</div>
-			</div>
-		</li>
-	</ul>
+  <ul *ngIf="orders().length > 0" class="orders-list">
+    <li *ngFor="let o of orders()" class="order-item">
+      <div class="order-row">
+        <div>
+          <strong>Order:</strong> {{ o.id }}<br />
+          <small>{{ o.date | date: 'medium' }}</small>
+        </div>
+        <div><strong>Total:</strong> ${{ o.total.toFixed(2) }}</div>
+        <div>
+          <button (click)="viewOrder(o)">View</button>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>

@@ -13,7 +13,10 @@ import { ProductService } from '../../core/services/product.service';
 export class Shop {
   products: any[] = [];
 
-  constructor(private cart: CartService, private productService: ProductService) {
+  constructor(
+    private cart: CartService,
+    private productService: ProductService,
+  ) {
     this.load();
   }
 
@@ -23,9 +26,24 @@ export class Shop {
       error: () => {
         // fallback to a small local set if backend is unreachable
         this.products = [
-          { id: 'rum', title: 'Jamaican Rum', price: 29.99, image: 'https://via.placeholder.com/400x300?text=Jamaican+Rum' },
-          { id: 'coffee', title: 'Blue Mountain Coffee (250g)', price: 19.5, image: 'https://via.placeholder.com/400x300?text=Blue+Mountain+Coffee' },
-          { id: 'jerk-sauce', title: 'Authentic Jerk Sauce', price: 8.75, image: 'https://via.placeholder.com/400x300?text=Jerk+Sauce' },
+          {
+            id: 'rum',
+            title: 'Jamaican Rum',
+            price: 29.99,
+            image: 'https://via.placeholder.com/400x300?text=Jamaican+Rum',
+          },
+          {
+            id: 'coffee',
+            title: 'Blue Mountain Coffee (250g)',
+            price: 19.5,
+            image: 'https://via.placeholder.com/400x300?text=Blue+Mountain+Coffee',
+          },
+          {
+            id: 'jerk-sauce',
+            title: 'Authentic Jerk Sauce',
+            price: 8.75,
+            image: 'https://via.placeholder.com/400x300?text=Jerk+Sauce',
+          },
         ];
       },
     });

@@ -22,7 +22,7 @@ export class Register {
     try {
       const raw = localStorage.getItem('ja_users') || '[]';
       const users = JSON.parse(raw) as any[];
-      if (users.find(u => u.email === this.email)) {
+      if (users.find((u) => u.email === this.email)) {
         alert('A user with that email already exists.');
         return;
       }

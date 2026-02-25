@@ -15,7 +15,10 @@ export class Login {
   email = '';
   password = '';
 
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+  ) {}
 
   login(e: Event) {
     e.preventDefault();
@@ -24,8 +27,13 @@ export class Login {
         // backend may return token and user info
         try {
           if (res && res.token) this.auth.saveToken(res.token);
-          const user = res.user || res.userData || (res.email ? { email: res.email, name: res.name } : null);
-          if (user) localStorage.setItem('ja_session', JSON.stringify({ email: user.email, name: user.name }));
+          const user =
+            res.user || res.userData || (res.email ? { email: res.email, name: res.name } : null);
+          if (user)
+            localStorage.setItem(
+              'ja_session',
+              JSON.stringify({ email: user.email, name: user.name }),
+            );
           this.router.navigate(['/']);
         } catch (err) {
           console.error('Login processing error', err);
@@ -35,7 +43,7 @@ export class Login {
       error: (err) => {
         console.error('Login failed', err);
         alert('Invalid credentials or server error.');
-      }
+      },
     });
   }
 }

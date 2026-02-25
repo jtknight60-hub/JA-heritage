@@ -26,7 +26,10 @@ export class Header {
   headerShrunk = signal(false);
   session = signal<any | null>(null);
 
-  constructor(public cart: CartService, private router: Router) {
+  constructor(
+    public cart: CartService,
+    private router: Router,
+  ) {
     // pulse the badge briefly whenever cart count increases
     effect(() => {
       const count = this.cart.cartCount();
@@ -57,7 +60,7 @@ export class Header {
 
     // refresh session on navigation (in same tab after login/logout) - only in browser
     if (typeof window !== 'undefined') {
-      this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => {
+      this.router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe(() => {
         try {
           const raw = localStorage.getItem('ja_session');
           this.session.set(raw ? JSON.parse(raw) : null);
@@ -69,7 +72,7 @@ export class Header {
   }
 
   toggleMenu() {
-    this.menuOpen.update(v => !v);
+    this.menuOpen.update((v) => !v);
   }
 
   @HostListener('window:scroll', [])
@@ -88,5 +91,3 @@ export class Header {
     return 'JA Heritage';
   }
 }
-
-

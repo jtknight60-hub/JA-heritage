@@ -12,7 +12,11 @@ import { OrderService } from '../../core/services/order.service';
   styleUrls: ['./cart.css'],
 })
 export class Cart {
-  constructor(public cart: CartService, private router: Router, private orderService: OrderService) {}
+  constructor(
+    public cart: CartService,
+    private router: Router,
+    private orderService: OrderService,
+  ) {}
 
   increase(item: CartItem) {
     this.cart.addItem({ id: item.id, title: item.title, price: item.price }, 1);
@@ -31,7 +35,9 @@ export class Cart {
     const items = this.cart.items();
     // get session
     let session = null;
-    try { session = JSON.parse(localStorage.getItem('ja_session') || 'null'); } catch {}
+    try {
+      session = JSON.parse(localStorage.getItem('ja_session') || 'null');
+    } catch {}
 
     const order = {
       // backend should assign final id, but include a client-side temp id
@@ -63,7 +69,7 @@ export class Cart {
         alert('Order placed locally (offline). Total: $' + total.toFixed(2));
         this.cart.clear();
         this.router.navigate(['/order-history']);
-      }
+      },
     });
   }
 }

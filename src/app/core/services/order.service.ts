@@ -15,7 +15,9 @@ export class OrderService {
 
   getOrders(email?: string, token?: string) {
     const headers = token ? new HttpHeaders({ Authorization: `Bearer ${token}` }) : undefined;
-    const url = email ? `${this.api}/orders?email=${encodeURIComponent(email)}` : `${this.api}/orders`;
+    const url = email
+      ? `${this.api}/orders?email=${encodeURIComponent(email)}`
+      : `${this.api}/orders`;
     return this.http.get<any[]>(url, { headers });
   }
 

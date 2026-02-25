@@ -3,7 +3,7 @@
 
   <ng-container *ngIf="order; else missing">
     <h2>Order {{ order.id }}</h2>
-    <p><strong>Date:</strong> {{ order.date | date:'medium' }}</p>
+    <p><strong>Date:</strong> {{ order.date | date: 'medium' }}</p>
     <p><strong>Total:</strong> ${{ order.total.toFixed(2) }}</p>
 
     <h3>Items</h3>
